@@ -1,5 +1,20 @@
 <?php  
-  
+/*
+
+   COLDEV REST SERVER (c)  COLOMBIAN DEVELOPERS
+   
+   ===   MIT LICENSE  ===
+
+   
+   
+   
+  >> John 1:12  (Jesus Christ Lord and Savior)
+   
+   Yet to all who did receive him, to those who believed in his name,
+   he gave the right to become children of God <<<
+
+
+*/  
 
 $GLOBALS['my_pdo_connection'] = 'sqlite:db/data.db';
 
