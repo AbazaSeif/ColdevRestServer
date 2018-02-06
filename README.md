@@ -31,7 +31,8 @@ Written by Colombian Developers.
 
 ### Installation Notes
 
-1. Copy all files in www directory
+1. Copy all files in www server directory, 
+   extract file "db   directory.rar" in db directory and overwrite directory content. 
 
 2. Zero server setup (Sqlite) portable code.
 
