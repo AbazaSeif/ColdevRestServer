@@ -55,15 +55,20 @@
 //====================================================================
 
 
-if (isset( $_POST["pp"] ))
+if (isset( $_POST["pp"] ) || isset( $_GET["pp"] )  )
 {
+  $DeliveryD = null;  
 
- if ( $_POST["pp"] == 1000 
-     && isset( $_POST["appid"]) && isset( $_POST["pass"])
-     &&  isset( $_POST["email"]) 
+  if (isset( $_POST["pp"] )  )   $DeliveryD = $_POST;
+  if (isset( $_GET["pp"] )  )    $DeliveryD = $_GET;
+
+
+ if ( $DeliveryD["pp"] == 1000 
+     && isset( $DeliveryD["appid"]) && isset( $DeliveryD["pass"])
+     &&  isset( $DeliveryD["email"]) 
  ) 
  {	 
-    APP_CREATE($_POST["appid"], $_POST["pass"], $_POST["email"]  );
+    APP_CREATE($DeliveryD["appid"], $DeliveryD["pass"], $DeliveryD["email"]  );
  }
  
  

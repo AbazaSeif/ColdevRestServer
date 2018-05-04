@@ -69,21 +69,29 @@ function BOARD_SCORE_LIST($appid , $boardcode, $fechadesde, $fechahasta, $result
 //====================================================================
 
 
-if (isset( $_POST["pp"] ))
+
+
+if (isset( $_POST["pp"] )  || isset( $_GET["pp"] )  )
 {
  
+   $DeliveryD = null;  
+
+  if (isset( $_POST["pp"] )  )   $DeliveryD = $_POST;
+  if (isset( $_GET["pp"] )  )    $DeliveryD = $_GET;
+
+ 
  //subir puntaje 
- if ( $_POST["pp"] == 2000   
-     && isset( $_POST["appid"]) && isset( $_POST["apppass"])
-     && isset( $_POST["user"])  && isset( $_POST["userpass"])
-	 && isset( $_POST["boardcode"]) && isset( $_POST["score"] )
+ if ( $DeliveryD["pp"] == 2000   
+     && isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])
+     && isset( $DeliveryD["user"])  && isset( $DeliveryD["userpass"])
+	 && isset( $DeliveryD["boardcode"]) && isset( $DeliveryD["score"] )
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )   &&
-	   VerificarCredencialesUSER($_POST["appid"], $_POST["user"], $_POST["userpass"]) )	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )   &&
+	   VerificarCredencialesUSER($DeliveryD["appid"], $DeliveryD["user"], $DeliveryD["userpass"]) )	   
    {    
-	BOARD_SCORE_UPLOAD($_POST["appid"], $_POST["boardcode"], $_POST["user"], $_POST["score"] );
+	BOARD_SCORE_UPLOAD($DeliveryD["appid"], $DeliveryD["boardcode"], $DeliveryD["user"], $DeliveryD["score"] );
    }
    
  }
@@ -91,17 +99,17 @@ if (isset( $_POST["pp"] ))
  
  
   //descargar puntaje 
- if ( $_POST["pp"] == 2100   
-     && isset( $_POST["appid"]) && isset( $_POST["apppass"])
-     &&  isset( $_POST["boardcode"]) &&  isset( $_POST["date1"])
-	 &&  isset( $_POST["date2"])    &&  isset( $_POST["count"] )
+ if ( $DeliveryD["pp"] == 2100   
+     && isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])
+     &&  isset( $DeliveryD["boardcode"]) &&  isset( $DeliveryD["date1"])
+	 &&  isset( $DeliveryD["date2"])    &&  isset( $DeliveryD["count"] )
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      )	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      )	   
    {    
-	BOARD_SCORE_LIST($_POST["appid"], $_POST["boardcode"], 
-	$_POST["date1"], $_POST["date2"], $_POST["count"] );
+	BOARD_SCORE_LIST($DeliveryD["appid"], $DeliveryD["boardcode"], 
+	$DeliveryD["date1"], $DeliveryD["date2"], $DeliveryD["count"] );
    }
    
  }

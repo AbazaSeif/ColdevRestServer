@@ -143,21 +143,28 @@ function PLAYER_USER_CATALOG_GET($appid, $user , $code )
 //====================================================================
 //====================================================================
 
+ $DeliveryD = null;  
 
-if (isset( $_POST["pp"] ))
+  if (isset( $_POST["pp"] )  )   $DeliveryD = $_POST;
+  if (isset( $_GET["pp"] )  )    $DeliveryD = $_GET;
+
+
+
+if (isset( $_POST["pp"] ) || isset( $_GET["pp"] ) )
 {
+
  
  //crear player 
- if ( $_POST["pp"] == 4000   
-     &&  isset( $_POST["appid"]) && isset( $_POST["apppass"])	 
-     &&  isset( $_POST["user"]) &&  isset( $_POST["userpass"])
-     &&  isset( $_POST["email"])	  
+ if ( $DeliveryD["pp"] == 4000   
+     &&  isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])	 
+     &&  isset( $DeliveryD["user"]) &&  isset( $DeliveryD["userpass"])
+     &&  isset( $DeliveryD["email"])	  
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      )	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      )	   
    {    
-	PLAYER_USER_CREATE($_POST["appid"], $_POST["user"], $_POST["userpass"] , $_POST["email"] );
+	PLAYER_USER_CREATE($DeliveryD["appid"], $DeliveryD["user"], $DeliveryD["userpass"] , $DeliveryD["email"] );
    }
    
  }
@@ -166,16 +173,16 @@ if (isset( $_POST["pp"] ))
 
 
  //listar players 
- if ( $_POST["pp"] == 4100   
-     &&  isset( $_POST["appid"]) && isset( $_POST["apppass"])	 
+ if ( $DeliveryD["pp"] == 4100   
+     &&  isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])	 
      
 	  
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      )	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      )	   
    {    
-	PLAYER_USER_LIST($_POST["appid"]  );
+	PLAYER_USER_LIST($DeliveryD["appid"]  );
    }
    
  }
@@ -183,16 +190,16 @@ if (isset( $_POST["pp"] ))
   
  
   // player login 
- if ( $_POST["pp"] == 4200   
-     &&  isset( $_POST["appid"]) && isset( $_POST["apppass"])	 
-     &&  isset( $_POST["user"]) &&  isset( $_POST["userpass"])
+ if ( $DeliveryD["pp"] == 4200   
+     &&  isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])	 
+     &&  isset( $DeliveryD["user"]) &&  isset( $DeliveryD["userpass"])
 	  
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      )	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      )	   
    {    
-	PLAYER_USER_LOGIN($_POST["appid"], $_POST["user"], $_POST["userpass"] );
+	PLAYER_USER_LOGIN($DeliveryD["appid"], $DeliveryD["user"], $DeliveryD["userpass"] );
    }
    
  }
@@ -201,20 +208,20 @@ if (isset( $_POST["pp"] ))
  
  
    // player up catalog 
- if ( $_POST["pp"] == 4300   
-     &&  isset( $_POST["appid"]) && isset( $_POST["apppass"])	 
-     &&  isset( $_POST["user"]) &&  isset( $_POST["userpass"])
-	 &&  isset( $_POST["cat_code"]) &&  isset( $_POST["data"])
+ if ( $DeliveryD["pp"] == 4300   
+     &&  isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])	 
+     &&  isset( $DeliveryD["user"]) &&  isset( $DeliveryD["userpass"])
+	 &&  isset( $DeliveryD["cat_code"]) &&  isset( $DeliveryD["data"])
 	 
 	  
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      &&
-       VerificarCredencialesUSER($_POST["appid"], $_POST["user"], $_POST["userpass"])    ) 	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      &&
+       VerificarCredencialesUSER($DeliveryD["appid"], $DeliveryD["user"], $DeliveryD["userpass"])    ) 	   
    {    
-	PLAYER_USER_CATALOG_UPLOAD($_POST["appid"], $_POST["user"], $_POST["cat_code"],
-					$_POST["data"] );
+	PLAYER_USER_CATALOG_UPLOAD($DeliveryD["appid"], $DeliveryD["user"], $DeliveryD["cat_code"],
+					$DeliveryD["data"] );
 	
 	 
    }
@@ -226,19 +233,19 @@ if (isset( $_POST["pp"] ))
  
  
    // player DWN catalog 
- if ( $_POST["pp"] == 4400   
-     &&  isset( $_POST["appid"]) && isset( $_POST["apppass"])	 
-     &&  isset( $_POST["user"]) &&  isset( $_POST["userpass"])
-	 &&  isset( $_POST["cat_code"])  
+ if ( $DeliveryD["pp"] == 4400   
+     &&  isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])	 
+     &&  isset( $DeliveryD["user"]) &&  isset( $DeliveryD["userpass"])
+	 &&  isset( $DeliveryD["cat_code"])  
 	 
 	  
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      &&
-       VerificarCredencialesUSER($_POST["appid"], $_POST["user"], $_POST["userpass"])    ) 	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      &&
+       VerificarCredencialesUSER($DeliveryD["appid"], $DeliveryD["user"], $DeliveryD["userpass"])    ) 	   
    {    
-	PLAYER_USER_CATALOG_GET($_POST["appid"], $_POST["user"], $_POST["cat_code"]	  );
+	PLAYER_USER_CATALOG_GET($DeliveryD["appid"], $DeliveryD["user"], $DeliveryD["cat_code"]	  );
 	
 	 
    }

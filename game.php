@@ -58,20 +58,27 @@ function GAME_CATALOG_GET($appid,   $code )
 //====================================================================
 
 
-if (isset( $_POST["pp"] ))
+if (isset( $_POST["pp"] )  || isset( $_GET["pp"] )  )
 {
+
+ $DeliveryD = null;  
+
+  if (isset( $_POST["pp"] )  )   $DeliveryD = $_POST;
+  if (isset( $_GET["pp"] )  )    $DeliveryD = $_GET;
+
+
  
  //subir catalogo 
- if ( $_POST["pp"] == 3000   
-     &&  isset( $_POST["appid"]) && isset( $_POST["apppass"])	 
-     &&  isset( $_POST["cat_code"]) &&  isset( $_POST["data"])
+ if ( $DeliveryD["pp"] == 3000   
+     &&  isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])	 
+     &&  isset( $DeliveryD["cat_code"]) &&  isset( $DeliveryD["data"])
 	  
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      )	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      )	   
    {    
-	GAME_CATALOG_UPLOAD($_POST["appid"], $_POST["cat_code"], $_POST["data"] );
+	GAME_CATALOG_UPLOAD($DeliveryD["appid"], $DeliveryD["cat_code"], $DeliveryD["data"] );
    }
    
  }
@@ -81,16 +88,16 @@ if (isset( $_POST["pp"] ))
  
  
   //descargar catalogo 
- if ( $_POST["pp"] == 3100   
-     &&  isset( $_POST["appid"]) && isset( $_POST["apppass"])	 
-     &&  isset( $_POST["cat_code"]) 
+ if ( $DeliveryD["pp"] == 3100   
+     &&  isset( $DeliveryD["appid"]) && isset( $DeliveryD["apppass"])	 
+     &&  isset( $DeliveryD["cat_code"]) 
 	  
  )  
  {	 
   
-   if (VerificarCredencialesAPP($_POST["appid"], $_POST["apppass"]  )      )	   
+   if (VerificarCredencialesAPP($DeliveryD["appid"], $DeliveryD["apppass"]  )      )	   
    {    
-	GAME_CATALOG_GET($_POST["appid"], $_POST["cat_code"]  );
+	GAME_CATALOG_GET($DeliveryD["appid"], $DeliveryD["cat_code"]  );
    }
    
  }
