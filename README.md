@@ -75,7 +75,7 @@ List all player.
 | Endpoint | ("http://localhost/server.php?pp=4100&appid=XXXXQWQW&apppass=123") | 
 | --- | --- |
 | Input | None |
-| Output | `{"rest":1}` OK  {"rest": 0} Error    |
+| Output | `{"rest":1,"list":[{"user":"LAURA","email":"KJK@jhas.com"}]}` OK  {"rest": 0} Error    |
 | File | `server.php` |
 
 
