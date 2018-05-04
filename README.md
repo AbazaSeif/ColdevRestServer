@@ -51,7 +51,7 @@ Written by Colombian Developers.
 
 Create a unique ID app .
 
-| Endpoint | http://localhost/server.php?pp=1000&appid=XXXXQWQW&pass=123&email=info@swdsd.com") | 
+| Endpoint | ("http://localhost/server.php?pp=1000&appid=XXXXQWQW&pass=123&email=info@swdsd.com") | 
 | --- | --- |
 | Input | None |
 | Output | `{"rest":1}` OK  {"rest": 0} Error   {"rest":-1} Already exists |
@@ -99,6 +99,69 @@ get player catalog.
 | --- | --- |
 | Input | None |
 | Output | `{"rest":1,"list":[{"data":"POPSJK34345"}]}` OK  {"rest": 0} Error    |
+| File | `server.php` |
+
+
+
+** PLAYER LOGIN **
+
+ player login.
+
+| Endpoint | ("http://localhost/server.php?pp=4200&appid=XXXXQWQW&apppass=123&user=LAURA&userpass=1234") | 
+| --- | --- |
+| Input | None |
+| Output | `{"rest":1}` OK  {"rest": 0} Error    |
+| File | `server.php` |
+
+
+
+
+** SET GAME CATALOG  **
+
+ Set game catalog.
+
+| Endpoint | ("http://localhost/server.php?pp=3000&appid=XXXXQWQW&apppass=123&cat_code=ASASASEWRE34&data=23423DSFSDF") | 
+| --- | --- |
+| Input | None |
+| Output | `{"rest":1}` OK  {"rest": 0} Error    |
+| File | `server.php` |
+
+
+
+** GET GAME CATALOG  **
+
+ Get game catalog.
+
+| Endpoint | ("http://localhost/server.php?pp=3000&appid=XXXXQWQW&apppass=123&cat_code=ASASASEWRE34") | 
+| --- | --- |
+| Input | None |
+| Output | `{"rest":1,"list":[{"data":"23423DSFSDF"}]}` OK  {"rest": 0} Error    |
+| File | `server.php` |
+
+
+
+
+
+** SET SCORE BOARDS **
+
+ Set score boards.
+
+| Endpoint | ("http://localhost/server.php?pp=2000&appid=XXXXQWQW&apppass=123&user=LAURA&userpass=1234&boardcode=highscore10&score=20000") | 
+| --- | --- |
+| Input | None |
+| Output | `{"rest":1}` OK  {"rest": 0} Error    |
+| File | `server.php` |
+
+
+
+** GET SCORE BOARDS **
+
+ Get score boards.
+
+| Endpoint | ("http://localhost/server.php?pp=2100&appid=XXXXQWQW&apppass=123&boardcode=highscore10&date1=2018-01-01&date2=2018-06-01&count=10") | 
+| --- | --- |
+| Input | None |
+| Output | `{"rest":1,"list":[{"user":"LAURA","score":"20000.0","scoredate":"2018-05-04 02:00:00"}]}` OK  {"rest": 0} Error    |
 | File | `server.php` |
 
 
